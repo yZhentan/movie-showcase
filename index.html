@@ -5,141 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>电影展映合集</title>
   <style>
-    :root {
-      --highlight-color: #ffd700;
-      --text-color: #fff;
-      --bg-color: #1a1a1a;
-      --card-bg: #2d2d2d;
-      --tip-color: #aaa;
-      --gap: 40px;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Arial', sans-serif;
     }
-
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      padding: 25px;
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 25px; /* 扩大页面内边距 */
     }
-
     .page-title {
       text-align: center;
-      margin: 40px 0;
-      font-size: 3rem;
-      color: var(--highlight-color);
+      margin: 40px 0; /* 扩大标题上下间距 */
+      font-size: 3rem; /* 扩大标题字体 */
+      color: #ffd700;
     }
-
     .movies-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: var(--gap);
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 扩大卡片最小宽度 */
+      gap: 40px; /* 扩大卡片之间的间距 */
+      margin-top: 50px; /* 扩大容器顶部距离 */
     }
-
     .movie-card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
+      background-color: #2d2d2d;
+      border-radius: 12px; /* 略微增大圆角 */
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* 增强阴影 */
       transition: transform 0.3s ease;
     }
-
     .movie-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-12px); /* 增强悬停效果 */
     }
-
     .movie-poster {
       width: 100%;
-      height: 480px;
+      height: 540px; /* 扩大海报高度 */
       object-fit: cover;
-      object-position: top;
+      object-position: top; /* 优先显示顶部，避免头部裁剪 */
       cursor: pointer;
     }
-
-    .poster-adjust {
-      object-position: 50% 25%;
-    }
-
     .click-tip {
       text-align: center;
-      color: var(--highlight-color);
-      font-size: 1.1rem;
-      padding: 10px 0;
+      color: #ffd700;
+      font-size: 1.1rem; /* 扩大提示文字 */
+      padding: 10px 0; /* 扩大提示栏高度 */
       background-color: #333;
       letter-spacing: 0.5px;
     }
-
     .movie-info {
-      padding: 25px;
+      padding: 25px; /* 扩大卡片内边距 */
     }
-
     .movie-titles {
-      margin-bottom: 20px;
+      margin-bottom: 20px; /* 扩大标题区域间距 */
     }
-
     .movie-title {
-      font-size: 1.8rem;
-      color: var(--highlight-color);
-      margin-bottom: 8px;
+      font-size: 1.8rem; /* 扩大电影标题 */
+      color: #ffd700;
+      margin-bottom: 8px; /* 扩大标题间距 */
     }
-
     .movie-english-title {
-      font-size: 1.25rem;
+      font-size: 1.25rem; /* 扩大英文标题 */
       color: #ccc;
       font-style: italic;
-      margin-bottom: 15px;
+      margin-bottom: 15px; /* 扩大英文标题间距 */
     }
-
-    .movie-basic, .movie-ratings {
+    .movie-basic {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px dashed #444;
+      gap: 10px 20px; /* 扩大基础信息间距 */
       color: #ddd;
+      font-size: 1rem; /* 扩大基础信息字体 */
+      margin-bottom: 20px; /* 扩大基础信息底部间距 */
+      padding-bottom: 15px; /* 扩大分割线间距 */
+      border-bottom: 1px dashed #444;
     }
-
+    .movie-genre, .movie-year, .movie-runtime {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* 扩大图标与文字间距 */
+    }
     .movie-genre::before { content: "🎬"; }
     .movie-year::before { content: "📅"; }
     .movie-runtime::before { content: "⏱️"; }
+    .movie-ratings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px; /* 扩大评分项间距 */
+      margin-bottom: 20px; /* 扩大评分区域底部间距 */
+      padding-bottom: 15px; /* 扩大分割线间距 */
+      border-bottom: 1px dashed #444;
+    }
+    .rating-item {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* 扩大评分图标与文字间距 */
+      font-size: 1rem; /* 扩大评分字体 */
+    }
     .imdb::before { content: "⭐"; }
     .rotten-tomato::before { content: "🍅"; }
     .audience::before { content: "🍿"; }
-
     .movie-time {
       color: #aaa;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      line-height: 1.8;
+      margin-bottom: 20px; /* 扩大时间区域底部间距 */
+      font-size: 1rem; /* 扩大时间字体 */
+      text-align: left; /* 强制左对齐 */
+      line-height: 1.8; /* 扩大行高，方便换行后对齐 */
     }
     .movie-time::before { content: "📺"; }
-    .nowrap-bracket { white-space: nowrap; margin-left: 3px; }
-
     .movie-desc {
       color: #ddd;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      font-size: 1.05rem;
+      line-height: 1.8; /* 扩大行高，提升可读性 */
+      margin-bottom: 25px; /* 扩大描述底部间距 */
+      font-size: 1.05rem; /* 扩大描述字体 */
     }
-
     .trailer-container {
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%;
+      padding-bottom: 56.25%; /* 保持16:9比例 */
       position: relative;
       overflow: hidden;
       background-color: #000;
-      border-radius: 8px;
-      margin-top: 20px;
+      border-radius: 8px; /* 略微增大圆角 */
+      margin-top: 20px; /* 扩大预告片顶部间距 */
     }
-
     .trailer-video {
       position: absolute;
       top: 0;
@@ -148,24 +137,45 @@
       height: 100%;
       border: none;
     }
-
     .trailer-tip {
       text-align: center;
-      color: var(--tip-color);
-      font-size: 0.9rem;
-      margin: 12px 0 25px 0;
+      color: #aaa;
+      font-size: 0.9rem; /* 扩大提示文字 */
+      margin: 12px 0 25px 0; /* 扩大提示栏间距 */
       letter-spacing: 1px;
     }
 
-    /* 移动端适配 */
-    @media (max-width: 768px) {
-      .movies-container { grid-template-columns: 1fr; gap: 35px; }
-      .page-title { font-size: 2.5rem; }
-      .movie-poster { height: 380px; }
-      .movie-title { font-size: 1.6rem; }
-      .poster-adjust { object-position: 50% 30%; }
+    .nowrap-bracket {
+      white-space: nowrap; /* 确保地点不拆分 */
+      display: inline; /* 继承左对齐，避免右飘 */
+      margin-left: 3px; /* 微调与时间的间距 */
     }
 
+      .poster-adjust {
+    object-position: 50% 20%; /* 电影6海报向下偏移20% */
+  }
+ 
+    /* 移动端适配（同步扩大尺寸） */
+    @media (max-width: 768px) {
+      .movies-container {
+        grid-template-columns: 1fr;
+        gap: 35px; /* 移动端卡片间距 */
+      }
+      .page-title {
+        font-size: 2.5rem; /* 移动端标题大小 */
+      }
+      .movie-poster {
+        height: 380px; /* 移动端海报高度 */
+      }
+      .movie-title {
+        font-size: 1.6rem; /* 移动端电影标题 */
+      }
+    
+        .poster-adjust {
+            object-position: 50% 25%; /* 移动端微调 */
+    }
+
+    }
     body::before {
       content: "";
       position: fixed;
@@ -188,167 +198,287 @@
 <body>
   <div id="particles-js" style="position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;"></div>
   <h1 class="page-title">宅家观影局</h1>
-  <div class="movies-container" id="movies-container"></div>
-
-  <script>
-    // 电影数据
-    const movies = [
-      {
-        id: 'trailer1',
-        poster: 'https://m.media-amazon.com/images/M/MV5BZTYwYjJhNzYtY2ZiZS00ZmYxLWJkZjctYjRlNGIxYjI3ZTU0XkEyXkFqcGc@._V1_.jpg',
-        posterAdjust: false,
-        title: 'F1:狂飙飞车',
-        enTitle: 'F1: The Movie',
-        genre: 'Action / Sport',
-        year: '2025',
-        runtime: '2h 35m',
-        imdb: '7.7/ 10',
-        rt: '82%',
-        audience: '97%',
-        time: '2025-10-04 下午3：30 （阶梯教室202）',
-        desc: '赛车视听盛宴 —— 真实还原F1赛车的速度与激情，赛道拍摄和音效震撼。跟随顶级车队和车手的赛季征程，揭秘赛场内外的竞争与合作，大银幕体验高速镜头和引擎轰鸣的沉浸式观感。',
-        trailer: 'https://www.youtube.com/embed/8yh9BPUBbbQ?mute=0'
-      },
-      {
-        id: 'trailer6',
-        poster: 'https://m.media-amazon.com/images/M/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
-        posterAdjust: false,
-        title: '超人2025',
-        enTitle: 'Superman (2025)',
-        genre: 'Action / Sci-Fi',
-        year: '2025',
-        runtime: '2h 9m',
-        imdb: '7.2/ 10',
-        rt: '83%',
-        audience: '90%',
-        time: '2025-10-04 晚上8：00 （阶梯教室202）',
-        desc: 'DC宇宙的重启之作，各人认为各方面都可圈可点，是一部合格的爆米花电影（前提是接受新超人的内裤穿在外面:( ',
-        trailer: 'https://www.youtube.com/embed/Ox8ZLF6cGM0?mute=0'
-      },
-      {
-        id: 'trailer3',
-        poster: 'https://m.media-amazon.com/images/M/MV5BMTk4NTk4MTk1OF5BMl5BanBnXkFtZTcwNTE2MDIwNA@@._V1_.jpg',
-        posterAdjust: true,
-        title: '创：战纪',
-        enTitle: 'TRON: Legacy',
-        genre: 'Sci-Fi / Action',
-        year: '2010',
-        runtime: '2h 5m',
-        imdb: '6.8/ 10',
-        rt: '51%',
-        audience: '64%',
-        time: '2025-10-04 晚上10：40 （阶梯教室202）',
-        desc: '虽然剧情比较一般但2010年的特效和配乐放在现在来看依然能吊打一众特效大片！非常值得在大荧幕观看，是一部当初在2010年被低估的特效大片。',
-        trailer: 'https://www.youtube.com/embed/P78pl1FUXfA?mute=0'
-      },
-      {
-        id: 'trailer5',
-        poster: 'https://m.media-amazon.com/images/M/MV5BNWI5ZmY3ZmYtOTkwNC00YWFkLTg4NmMtNzgwNzFmYzk5M2NiXkEyXkFqcGc@._V1_.jpg',
-        posterAdjust: false,
-        title: '楚门的世界',
-        enTitle: 'The Truman Show',
-        genre: 'Comedy / Sci-Fi',
-        year: '1998',
-        runtime: '1h 43m',
-        imdb: '8.2/ 10',
-        rt: '94%',
-        audience: '89%',
-        time: '2025-10-05 下午2：00 （阶梯教室202）',
-        desc: '金·凯瑞的突破\n这是喜剧演员金·凯瑞少有的“正剧”角色，他的表演细腻又有力，打破了人们对他单一搞笑的印象。\n哲学寓意\n探讨“自由与真相”的价值：是选择安稳的虚假生活，还是勇敢追求未知的真实？',
-        trailer: 'https://www.youtube.com/embed/dlnmQbPGuls?mute=0'
-      },
-      {
-        id: 'trailer4',
-        poster: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg',
-        posterAdjust: true,
-        title: '蝙蝠侠：黑暗骑士',
-        enTitle: 'The Dark Knight',
-        genre: 'Action / Crime',
-        year: '2008',
-        runtime: '2h 32m',
-        imdb: '9.1/ 10',
-        rt: '94%',
-        audience: '94%',
-        time: '2025-10-05 下午4：13 （阶梯教室202）',
-        desc: '小丑的经典演绎\n希斯·莱杰饰演的小丑被认为是影史最出色的反派之一，充满疯狂与哲学意味，获得奥斯卡最佳男配角。\n现实主义风格\n不再是漫画式的超英，而是黑暗、写实的都市犯罪故事，让“超级英雄片”升华为真正的电影艺术。',
-        trailer: 'https://www.youtube.com/embed/LDG9bisJEaI?mute=0'
-      },
-      {
-        id: 'trailer2',
-        poster: 'https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
-        posterAdjust: true,
-        title: '驯龙高手',
-        enTitle: 'How to Train Your Dragon',
-        genre: 'Fantasy / Adventure',
-        year: '2025',
-        runtime: '2h 5m',
-        imdb: '7.8/ 10',
-        rt: '76%',
-        audience: '97%',
-        time: '2025-10-05 晚上8：00 （阶梯教室202）',
-        desc: '在大银幕重温小时候与“无牙仔Toothless”的羁绊！延续人与龙的友谊传说，画面风格延续经典。',
-        trailer: 'https://www.youtube.com/embed/22w7z_lT6YM?mute=0'
-      }
-    ];
-
-    const container = document.getElementById('movies-container');
-
-    movies.forEach(movie => {
-      const card = document.createElement('div');
-      card.className = 'movie-card';
-      card.innerHTML = `
-        <img src="${movie.poster}" class="movie-poster ${movie.posterAdjust ? 'poster-adjust' : ''}" onclick="playTrailer('${movie.id}')">
-        <div class="click-tip">点击海报播放预告片</div>
-        <div class="movie-info">
-          <div class="movie-titles">
-            <div class="movie-title">${movie.title}</div>
-            <div class="movie-english-title">${movie.enTitle}</div>
-          </div>
-          <div class="movie-basic">
-            <span class="movie-genre">${movie.genre}</span>
-            <span class="movie-year">${movie.year}</span>
-            <span class="movie-runtime">${movie.runtime}</span>
-          </div>
-          <div class="movie-ratings">
-            <span class="imdb">${movie.imdb}</span>
-            <span class="rotten-tomato">${movie.rt}</span>
-            <span class="audience">${movie.audience}</span>
-          </div>
-          <div class="movie-time">${movie.time}</div>
-          <div class="movie-desc">${movie.desc.replace(/\n/g,'<br>')}</div>
-          <div class="trailer-container">
-            <iframe id="${movie.id}" class="trailer-video" src="${movie.trailer}" allowfullscreen></iframe>
-          </div>
-          <div class="trailer-tip">首次播放请手动点击播放器</div>
+  <div class="movies-container">
+    <!-- 电影1 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BZTYwYjJhNzYtY2ZiZS00ZmYxLWJkZjctYjRlNGIxYjI3ZTU0XkEyXkFqcGc@._V1_.jpg" 
+           class="movie-poster" 
+           alt="F1:狂飙飞车海报" 
+           onclick="playTrailer('trailer1')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">F1:狂飙飞车</h3>
+          <p class="movie-english-title">F1: The Movie</p>
         </div>
-      `;
-      container.appendChild(card);
-    });
+        <div class="movie-basic">
+          <span class="movie-genre">Action / Sport</span>
+          <span class="movie-year">2025</span>
+          <span class="movie-runtime">2h 35m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 7.7/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 82%</span>
+          <span class="rating-item audience">爆米花: 97%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-04 下午3：30 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          赛车视听盛宴 —— 真实还原F1赛车的速度与激情，赛道拍摄和音效震撼。跟随顶级车队和车手的赛季征程，揭秘赛场内外的竞争与合作，大银幕体验高速镜头和引擎轰鸣的沉浸式观感。
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer1" class="trailer-video"
+            src="https://www.youtube.com/embed/8yh9BPUBbbQ?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+    <!-- 电影2 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+           class="movie-poster" 
+           alt="超人2025海报" 
+           onclick="playTrailer('trailer6')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">超人2025</h3>
+          <p class="movie-english-title">Superman (2025)</p>
+        </div>
+        <div class="movie-basic">
+          <span class="movie-genre">Action / Sci-Fi</span>
+          <span class="movie-year">2025</span>
+          <span class="movie-runtime">2h 9m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 7.2/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 83%</span>
+          <span class="rating-item audience">爆米花: 90%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-04 晚上8：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          DC宇宙的重启之作，各人认为各方面都可圈可点，是一部合格的爆米花电影（前提是接受新超人的内裤穿在外面:(
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer6" class="trailer-video"
+            src="https://www.youtube.com/embed/Ox8ZLF6cGM0?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+    <!-- 电影3 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTk4NTk4MTk1OF5BMl5BanBnXkFtZTcwNTE2MDIwNA@@._V1_.jpg" 
+           class="movie-poster" 
+           alt="创：战纪：重启海报" 
+           onclick="playTrailer('trailer3')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">创：战纪</h3>
+          <p class="movie-english-title">TRON: Legacy</p>
+        </div>
+        <div class="movie-basic">
+          <span class="movie-genre">Sci-Fi / Action</span>
+          <span class="movie-year">2010</span>
+          <span class="movie-runtime">2h 5m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 6.8/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 51%</span>
+          <span class="rating-item audience">爆米花: 64%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-04 晚上10：40 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          虽然剧情比较一般但2010年的特效和配乐放在现在来看依然能吊打一众特效大片！
+非常值得在大荧幕观看，是一部当初在2010年被低估的特效大片。
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer3" class="trailer-video"
+            src="https://www.youtube.com/embed/P78pl1FUXfA?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+    <!-- 电影4 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BNWI5ZmY3ZmYtOTkwNC00YWFkLTg4NmMtNzgwNzFmYzk5M2NiXkEyXkFqcGc@._V1_.jpg" 
+           class="movie-poster" 
+           alt="楚门的世界海报" 
+           onclick="playTrailer('trailer5')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">楚门的世界</h3>
+          <p class="movie-english-title">The Truman Show</p>
+        </div>
+        <div class="movie-basic">
+          <span class="movie-genre">Comedy / Sci-Fi</span>
+          <span class="movie-year">1998</span>
+          <span class="movie-runtime">1h 43m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 8.2/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 94%</span>
+          <span class="rating-item audience">爆米花: 89%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-05 下午2：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          金·凯瑞的突破
+        这是喜剧演员金·凯瑞少有的“正剧”角色，他的表演细腻又有力，打破了人们对他单一搞笑的印象。
 
-    function playTrailer(id) {
-      const iframe = document.getElementById(id);
-      if (!iframe.src.includes("autoplay=1")) {
-        iframe.src += "&autoplay=1";
+        哲学寓意
+        探讨“自由与真相”的价值：是选择安稳的虚假生活，还是勇敢追求未知的真实？
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer5" class="trailer-video"
+            src="https://www.youtube.com/embed/dlnmQbPGuls?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+    <!-- 电影5 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg" 
+           class="movie-poster" 
+           alt="蝙蝠侠：黑暗骑士海报" 
+           onclick="playTrailer('trailer4')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">蝙蝠侠：黑暗骑士</h3>
+          <p class="movie-english-title">The Dark Knight</p>
+        </div>
+        <div class="movie-basic">
+          <span class="movie-genre">Action / Crime </span>
+          <span class="movie-year">2008</span>
+          <span class="movie-runtime">2h 32m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 9.1/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 94%</span>
+          <span class="rating-item audience">爆米花: 94%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-05 下午4：13 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          小丑的经典演绎
+        希斯·莱杰饰演的小丑被认为是影史最出色的反派之一，充满疯狂与哲学意味，获得奥斯卡最佳男配角。
+
+        现实主义风格
+        不再是漫画式的超英，而是黑暗、写实的都市犯罪故事，让“超级英雄片”升华为真正的电影艺术。
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer4" class="trailer-video"
+            src="https://www.youtube.com/embed/LDG9bisJEaI?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+    <!-- 电影6 -->
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+           class="movie-poster" 
+           class="movie-poster poster-adjust"  
+           alt="新·驯龙高手海报" 
+           onclick="playTrailer('trailer2')">
+      <div class="movie-info">
+        <div class="movie-titles">
+          <h3 class="movie-title">驯龙高手</h3>
+          <p class="movie-english-title">How to Train Your Dragon</p>
+        </div>
+        <div class="movie-basic">
+          <span class="movie-genre">Fantasy / Adventure</span>
+          <span class="movie-year">2025</span>
+          <span class="movie-runtime">2h 5m</span>
+        </div>
+        <div class="movie-ratings">
+          <span class="rating-item imdb">IMDb: 7.8/ 10</span>
+          <span class="rating-item rotten-tomato">烂番茄: 76%</span>
+          <span class="rating-item audience">爆米花: 97%</span>
+        </div>
+        <p class="movie-time">播出时间：2025-10-05 晚上8：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
+        <p class="movie-desc">
+          在大银幕重温小时候与“无牙仔Toothless”的羁绊！延续人与龙的友谊传说，画面风格延续经典。
+        </p>
+        <div class="trailer-container">
+          <iframe id="trailer2" class="trailer-video"
+            src="https://www.youtube.com/embed/22w7z_lT6YM?mute=0"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="trailer-tip">首次播放请手动点击播放器</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 预告片播放控制
+    function playTrailer(trailerId) {
+      const trailerLinks = {
+        'trailer1': 'https://www.youtube.com/embed/8yh9BPUBbbQ?mute=0',
+        'trailer2': 'https://www.youtube.com/embed/22w7z_lT6YM?mute=0',
+        'trailer3': 'https://www.youtube.com/embed/P78pl1FUXfA?mute=0',
+        'trailer4': 'https://www.youtube.com/embed/LDG9bisJEaI?mute=0',
+        'trailer5': 'https://www.youtube.com/embed/dlnmQbPGuls?mute=0',
+        'trailer6': 'https://www.youtube.com/embed/Ox8ZLF6cGM0?mute=0'
+      };
+      const trailerLinksAutoplay = {
+        'trailer1': 'https://www.youtube.com/embed/8yh9BPUBbbQ?autoplay=1&mute=0',
+        'trailer2': 'https://www.youtube.com/embed/22w7z_lT6YM?autoplay=1&mute=0',
+        'trailer3': 'https://www.youtube.com/embed/P78pl1FUXfA?autoplay=1&mute=0',
+        'trailer4': 'https://www.youtube.com/embed/LDG9bisJEaI?autoplay=1&mute=0',
+        'trailer5': 'https://www.youtube.com/embed/dlnmQbPGuls?autoplay=1&mute=0',
+        'trailer6': 'https://www.youtube.com/embed/Ox8ZLF6cGM0?autoplay=1&mute=0'
+      };
+      for (let i = 1; i <= 6; i++) {
+        const t = document.getElementById('trailer' + i);
+        if (t) t.src = trailerLinks['trailer' + i];
       }
+      const trailer = document.getElementById(trailerId);
+      trailer.src = trailerLinksAutoplay[trailerId];
     }
-
     particlesJS("particles-js", {
       "particles": {
-        "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
+        "number": {
+          "value": 70,
+          "density": { "enable": true, "value_area": 1000 }
+        },
+        "color": { "value": "#fff" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.3, "random": true },
-        "size": { "value": 4, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 },
-        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "bounce": false }
+        "opacity": {
+          "value": 0.16,
+          "random": true
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 0.32,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
+        }
       },
       "interactivity": {
         "detect_on": "canvas",
-        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-        "modes": { "grab": { "distance": 150, "line_linked": { "opacity": 0.4 } }, "push": { "particles_nb": 4 } }
+        "events": { "onhover": { "enable": false }, "onclick": { "enable": false } }
       },
       "retina_detect": true
     });
   </script>
+  <footer style="margin-top:60px; padding:25px; background-color:#222; color:#fff; border-top:1px solid #444; text-align:center;">
+    <h3 style="color:#ffd700; margin-bottom:15px; font-size:1.3rem;">活动工作人员名单</h3>
+    <ul style="list-style:none; padding:0; line-height:2; font-size:1.05rem;">
+      <li>统筹：陈颖禛 许文欣</li>
+      <li>技术支持：陈颖禛</li>
+      <li>宣发：陈颖禛</li>
+      <li>场务：陈颖禛 李净 许文欣</li>
+    </ul>
+    <p style="text-align:center; font-size:0.9rem; color:#aaa; margin-top:15px; line-height:1.8;">
+      <span class="nowrap-bracket">🍅 Tomatometer = 专业影评人好评率</span>，
+      <span class="nowrap-bracket">🍿 Popcornmeter = 普通观众好评率</span>
+    </p>
+    <p style="margin-top:20px; font-size:0.95rem; color:#aaa;">感谢所有工作人员的辛勤付出！</p>
+  </footer>
 </body>
 </html>
