@@ -14,75 +14,76 @@
     body {
       background-color: #1a1a1a;
       color: #fff;
-      padding: 20px;
+      padding: 25px; /* 扩大页面内边距 */
     }
     .page-title {
       text-align: center;
-      margin: 30px 0;
-      font-size: 2.5rem;
+      margin: 40px 0; /* 扩大标题上下间距 */
+      font-size: 3rem; /* 扩大标题字体 */
       color: #ffd700;
     }
     .movies-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 扩大卡片最小宽度 */
+      gap: 40px; /* 扩大卡片之间的间距 */
+      margin-top: 50px; /* 扩大容器顶部距离 */
     }
     .movie-card {
       background-color: #2d2d2d;
-      border-radius: 10px;
+      border-radius: 12px; /* 略微增大圆角 */
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* 增强阴影 */
       transition: transform 0.3s ease;
     }
     .movie-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-12px); /* 增强悬停效果 */
     }
     .movie-poster {
       width: 100%;
-      height: 400px;
+      height: 480px; /* 扩大海报高度 */
       object-fit: cover;
+      object-position: top; /* 优先显示顶部，避免头部裁剪 */
       cursor: pointer;
     }
     .click-tip {
       text-align: center;
       color: #ffd700;
-      font-size: 1rem;
-      padding: 8px 0;
+      font-size: 1.1rem; /* 扩大提示文字 */
+      padding: 10px 0; /* 扩大提示栏高度 */
       background-color: #333;
       letter-spacing: 0.5px;
     }
     .movie-info {
-      padding: 20px;
+      padding: 25px; /* 扩大卡片内边距 */
     }
     .movie-titles {
-      margin-bottom: 15px;
+      margin-bottom: 20px; /* 扩大标题区域间距 */
     }
     .movie-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem; /* 扩大电影标题 */
       color: #ffd700;
-      margin-bottom: 5px;
+      margin-bottom: 8px; /* 扩大标题间距 */
     }
     .movie-english-title {
-      font-size: 1.1rem;
+      font-size: 1.25rem; /* 扩大英文标题 */
       color: #ccc;
       font-style: italic;
-      margin-bottom: 10px;
+      margin-bottom: 15px; /* 扩大英文标题间距 */
     }
     .movie-basic {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 15px;
+      gap: 10px 20px; /* 扩大基础信息间距 */
       color: #ddd;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
+      font-size: 1rem; /* 扩大基础信息字体 */
+      margin-bottom: 20px; /* 扩大基础信息底部间距 */
+      padding-bottom: 15px; /* 扩大分割线间距 */
       border-bottom: 1px dashed #444;
     }
     .movie-genre, .movie-year, .movie-runtime {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px; /* 扩大图标与文字间距 */
     }
     .movie-genre::before { content: "🎬"; }
     .movie-year::before { content: "📅"; }
@@ -90,44 +91,43 @@
     .movie-ratings {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
+      gap: 15px; /* 扩大评分项间距 */
+      margin-bottom: 20px; /* 扩大评分区域底部间距 */
+      padding-bottom: 15px; /* 扩大分割线间距 */
       border-bottom: 1px dashed #444;
     }
     .rating-item {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.9rem;
+      gap: 8px; /* 扩大评分图标与文字间距 */
+      font-size: 1rem; /* 扩大评分字体 */
     }
     .imdb::before { content: "⭐"; }
     .rotten-tomato::before { content: "🍅"; }
     .audience::before { content: "🍿"; }
     .movie-time {
       color: #aaa;
-      margin-bottom: 15px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      margin-bottom: 20px; /* 扩大时间区域底部间距 */
+      font-size: 1rem; /* 扩大时间字体 */
+      text-align: left; /* 强制左对齐 */
+      line-height: 1.8; /* 扩大行高，方便换行后对齐 */
     }
     .movie-time::before { content: "📺"; }
     .movie-desc {
       color: #ddd;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+      line-height: 1.8; /* 扩大行高，提升可读性 */
+      margin-bottom: 25px; /* 扩大描述底部间距 */
+      font-size: 1.05rem; /* 扩大描述字体 */
     }
     .trailer-container {
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%;
+      padding-bottom: 56.25%; /* 保持16:9比例 */
       position: relative;
       overflow: hidden;
       background-color: #000;
-      border-radius: 5px;
-      margin-top: 15px;
+      border-radius: 8px; /* 略微增大圆角 */
+      margin-top: 20px; /* 扩大预告片顶部间距 */
     }
     .trailer-video {
       position: absolute;
@@ -140,27 +140,31 @@
     .trailer-tip {
       text-align: center;
       color: #aaa;
-      font-size: 0.80rem;
-      margin: 8px 0 18px 0;
+      font-size: 0.9rem; /* 扩大提示文字 */
+      margin: 12px 0 25px 0; /* 扩大提示栏间距 */
       letter-spacing: 1px;
     }
 
     .nowrap-bracket {
-    white-space: nowrap;
+      white-space: nowrap; /* 确保地点不拆分 */
+      display: inline; /* 继承左对齐，避免右飘 */
+      margin-left: 3px; /* 微调与时间的间距 */
     }
 
+    /* 移动端适配（同步扩大尺寸） */
     @media (max-width: 768px) {
       .movies-container {
         grid-template-columns: 1fr;
+        gap: 35px; /* 移动端卡片间距 */
       }
       .page-title {
-        font-size: 2rem;
+        font-size: 2.5rem; /* 移动端标题大小 */
       }
       .movie-poster {
-        height: 300px;
+        height: 380px; /* 移动端海报高度 */
       }
       .movie-title {
-        font-size: 1.3rem;
+        font-size: 1.6rem; /* 移动端电影标题 */
       }
     }
     body::before {
@@ -170,7 +174,7 @@
       left: 0; top: 0; right: 0; bottom: 0;
       background: linear-gradient(120deg, #232526, #ffd700 40%, #fff8b0 60%, #ffd700 80%, #232526 100%);
       background-size: 400% 400%;
-      animation: gradientMove 8s ease-in-out infinite;
+      animation: gradientMove 10s ease-in-out infinite;
       opacity: 0.32;
     }
 
@@ -207,7 +211,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 82%</span>
           <span class="rating-item audience">爆米花: 97%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-04 下午3：30（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-04 下午3：30 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           赛车视听盛宴 —— 真实还原F1赛车的速度与激情，赛道拍摄和音效震撼。跟随顶级车队和车手的赛季征程，揭秘赛场内外的竞争与合作，大银幕体验高速镜头和引擎轰鸣的沉浸式观感。
         </p>
@@ -240,7 +244,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 83%</span>
           <span class="rating-item audience">爆米花: 90%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-04 晚上8：00（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-04 晚上8：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           DC宇宙的重启之作，各人认为各方面都可圈可点，是一部合格的爆米花电影（前提是接受新超人的内裤穿在外面:(
         </p>
@@ -273,7 +277,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 51%</span>
           <span class="rating-item audience">爆米花: 64%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-04 晚上10：40（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-04 晚上10：40 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           虽然剧情比较一般但2010年的特效和配乐放在现在来看依然能吊打一众特效大片！
 非常值得在大荧幕观看，是一部当初在2010年被低估的特效大片。
@@ -307,7 +311,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 94%</span>
           <span class="rating-item audience">爆米花: 89%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-05 下午2：00（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-05 下午2：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           金·凯瑞的突破
         这是喜剧演员金·凯瑞少有的“正剧”角色，他的表演细腻又有力，打破了人们对他单一搞笑的印象。
@@ -344,7 +348,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 94%</span>
           <span class="rating-item audience">爆米花: 94%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-05 下午4：13（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-05 下午4：13 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           小丑的经典演绎
         希斯·莱杰饰演的小丑被认为是影史最出色的反派之一，充满疯狂与哲学意味，获得奥斯卡最佳男配角。
@@ -381,7 +385,7 @@
           <span class="rating-item rotten-tomato">烂番茄: 76%</span>
           <span class="rating-item audience">爆米花: 97%</span>
         </div>
-        <p class="movie-time">播出时间：2025-10-05 晚上8：00（阶梯教室202）</p>
+        <p class="movie-time">播出时间：2025-10-05 晚上8：00 <span class="nowrap-bracket">（阶梯教室202）</span></p>
         <p class="movie-desc">
           在大银幕重温小时候与“无牙仔Toothless”的羁绊！延续人与龙的友谊传说，画面风格延续经典。
         </p>
@@ -395,9 +399,8 @@
     </div>
   </div>
   <script>
-    // 预告片播放控制（点击海报时播放对应预告片，同时停止其他播放）
+    // 预告片播放控制
     function playTrailer(trailerId) {
-      // 预告片基础链接（不带autoplay参数）
       const trailerLinks = {
         'trailer1': 'https://www.youtube.com/embed/8yh9BPUBbbQ?mute=0',
         'trailer2': 'https://www.youtube.com/embed/22w7z_lT6YM?mute=0',
@@ -406,7 +409,6 @@
         'trailer5': 'https://www.youtube.com/embed/dlnmQbPGuls?mute=0',
         'trailer6': 'https://www.youtube.com/embed/Ox8ZLF6cGM0?mute=0'
       };
-      // 自动播放链接
       const trailerLinksAutoplay = {
         'trailer1': 'https://www.youtube.com/embed/8yh9BPUBbbQ?autoplay=1&mute=0',
         'trailer2': 'https://www.youtube.com/embed/22w7z_lT6YM?autoplay=1&mute=0',
@@ -415,60 +417,58 @@
         'trailer5': 'https://www.youtube.com/embed/dlnmQbPGuls?autoplay=1&mute=0',
         'trailer6': 'https://www.youtube.com/embed/Ox8ZLF6cGM0?autoplay=1&mute=0'
       };
-      // 先重置所有iframe为基础链接
       for (let i = 1; i <= 6; i++) {
         const t = document.getElementById('trailer' + i);
         if (t) t.src = trailerLinks['trailer' + i];
       }
-      // 当前点击的iframe切换为自动播放
       const trailer = document.getElementById(trailerId);
       trailer.src = trailerLinksAutoplay[trailerId];
     }
     particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 70, // 粒子数量更多
-      "density": { "enable": true, "value_area": 1000 }
-    },
-    "color": { "value": "#fff" },
-    "shape": { "type": "circle" },
-    "opacity": {
-      "value": 0.16, // 稍微更明显
-      "random": true
-    },
-    "size": {
-      "value": 3, // 稍大一点
-      "random": true
-    },
-    "move": {
-      "enable": true,
-      "speed": 0.32, // 依然很慢
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "out"
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": { "onhover": { "enable": false }, "onclick": { "enable": false } }
-  },
-  "retina_detect": true
-});
+      "particles": {
+        "number": {
+          "value": 70,
+          "density": { "enable": true, "value_area": 1000 }
+        },
+        "color": { "value": "#fff" },
+        "shape": { "type": "circle" },
+        "opacity": {
+          "value": 0.16,
+          "random": true
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 0.32,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": false }, "onclick": { "enable": false } }
+      },
+      "retina_detect": true
+    });
   </script>
-  <footer style="margin-top:50px; padding:20px; background-color:#222; color:#fff; border-top:1px solid #444; text-align:center;">
-    <h3 style="color:#ffd700; margin-bottom:10px;">活动工作人员名单</h3>
-    <ul style="list-style:none; padding:0; line-height:1.8;">
+  <footer style="margin-top:60px; padding:25px; background-color:#222; color:#fff; border-top:1px solid #444; text-align:center;">
+    <h3 style="color:#ffd700; margin-bottom:15px; font-size:1.3rem;">活动工作人员名单</h3>
+    <ul style="list-style:none; padding:0; line-height:2; font-size:1.05rem;">
       <li>统筹：陈颖禛 许文欣</li>
       <li>技术支持：陈颖禛</li>
       <li>宣发：陈颖禛</li>
       <li>场务：陈颖禛 李净 许文欣</li>
     </ul>
-    <p style="text-align:center; font-size:0.8rem; color:#aaa; margin-top:10px;">
-  <span style="white-space: nowrap;">🍅 Tomatometer = 专业影评人好评率</span>，
-  <span style="white-space: nowrap;">🍿 Popcornmeter = 普通观众好评率</span>
-</p>
-    <p style="margin-top:15px; font-size:0.85rem; color:#aaa;">感谢所有工作人员的辛勤付出！</p>
+    <p style="text-align:center; font-size:0.9rem; color:#aaa; margin-top:15px; line-height:1.8;">
+      <span class="nowrap-bracket">🍅 Tomatometer = 专业影评人好评率</span>，
+      <span class="nowrap-bracket">🍿 Popcornmeter = 普通观众好评率</span>
+    </p>
+    <p style="margin-top:20px; font-size:0.95rem; color:#aaa;">感谢所有工作人员的辛勤付出！</p>
   </footer>
 </body>
 </html>
