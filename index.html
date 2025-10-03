@@ -158,9 +158,27 @@
         font-size: 1.3rem;
       }
     }
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: linear-gradient(120deg, #232526, #414345, #ffd700, #232526, #414345);
+      background-size: 400% 400%;
+      animation: gradientMove 18s ease-in-out infinite;
+      opacity: 0.25;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
+  <div id="particles-js" style="position:fixed;z-index:-1;top:0;left:0;width:100vw;height:100vh;"></div>
   <h1 class="page-title">精选电影展映</h1>
   <div class="movies-container">
     <!-- 电影1 -->
@@ -407,6 +425,37 @@
       const trailer = document.getElementById(trailerId);
       trailer.src = trailerLinksAutoplay[trailerId];
     }
+    particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 40, // 数量减少
+      "density": { "enable": true, "value_area": 1000 }
+    },
+    "color": { "value": "#fff" },
+    "shape": { "type": "circle" },
+    "opacity": {
+      "value": 0.12, // 更透明
+      "random": true
+    },
+    "size": {
+      "value": 2.5, // 更小
+      "random": true
+    },
+    "move": {
+      "enable": true,
+      "speed": 0.3, // 更慢
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out"
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": { "onhover": { "enable": false }, "onclick": { "enable": false } }
+  },
+  "retina_detect": true
+});
   </script>
   <footer style="margin-top:50px; padding:20px; background-color:#222; color:#fff; border-top:1px solid #444; text-align:center;">
     <h3 style="color:#ffd700; margin-bottom:10px;">活动工作人员名单</h3>
